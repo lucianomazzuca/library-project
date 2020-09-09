@@ -30,4 +30,8 @@ Match id from button with book position in array
 Delete id position in array
 Delete parent row
 
+delete id position in array
+delete deleteBookContainer
+render again with deletebtns
+
 #Fix deletebtn: deleteBookContainer deletes all rows including the buttons, so I need to resave those buttons

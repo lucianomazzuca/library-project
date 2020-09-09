@@ -18,7 +18,7 @@ function addBookToLibrary(title, author, pages, read){
 let book1 = new Book("The Hobbit", "Tolkien", 300, "Not read");
 myLibrary.push(book1);
 
-let book2 = new Book("The Hobbit", "Tolkien", 300, "Not read");
+let book2 = new Book("silmarillion", "Tolkien", 300, "Not read");
 myLibrary.push(book2);
 
 addBookToLibrary("Lord of the Rings", "Tolkien", 300, "Not read")
@@ -45,20 +45,28 @@ function render(){
         }
 
         //Create div, append del button to it.
-        let propertiesDiv = document.createElement('div');
-        propertiesDiv.classList = 'properties';
-        row.appendChild(propertiesDiv); 
+        let deleteDiv = document.createElement('div');
+        deleteDiv.classList = 'properties';
+        row.appendChild(deleteDiv); 
 
         let btnDelete = document.createElement('button');
         btnDelete.classList = "btn-delete";
         btnDelete.id = index;
         btnDelete.innerText = 'Del'
     
-        propertiesDiv.appendChild(btnDelete);
+        deleteDiv.appendChild(btnDelete);
+
+        btnDelete.addEventListener('click', function(e){
+            console.log(btnDelete.id)
+            myLibrary.splice(btnDelete.id, 1);
+            let btnRow = btnDelete.parentNode.parentNode;
+            deleteAllBooks()
+            render()
+        })
     })
 }
 
-function deleteBookContainer(){
+function deleteAllBooks(){
     while(bookContainer.firstChild) {
         bookContainer.removeChild(bookContainer.firstChild);
     }
@@ -83,7 +91,6 @@ btnAdd.addEventListener('click', function(e){
 })
 
 render()
-deleteEventListener()
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -92,23 +99,20 @@ form.addEventListener('submit', function(e){
     const pagesFormValue = pagesForm.value;
     const statusFormValue = titleForm.value;
     addBookToLibrary(titleFormValue,authorFormValue, pagesFormValue,statusFormValue);
-    deleteBookContainer();
+    deleteAllBooks();
     render();
-    deleteEventListener()
     hideForm();
 })
 
 
-function deleteEventListener(){
-    document.querySelectorAll('.btn-delete').forEach(btn => {
-        btn.addEventListener('click', function(e){
-            console.log(btn.id)
-            myLibrary.splice(btn.id, 1);
-            let btnRow = btn.parentNode.parentNode;
-            btnRow.parentNode.removeChild(btnRow)
-        })
-    })
-}
+
+// document.querySelectorAll('.btn-delete').forEach(btn => {
+//     btn.addEventListener('click', function(e){
+//         myLibrary.splice(btn.id, 1);
+//         deleteAllBooks();
+//         render();
+//      })
+// })
 
 
 
