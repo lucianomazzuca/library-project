@@ -1,0 +1,33 @@
+Take books from library array and display on screen.
+
+Iterate each book in library:
+    Create div row
+    Append row in book-container
+        Iterate each property from book:
+            put each property of book in a div
+            append div to div-row in html
+
+
+Press add button
+    Show form with book details
+    Add them to the list 
+
+
+add book to library:
+
+
+Add book:
+
+Create form
+On submit click:
+Call addBook function, pass each value from form as parameters
+
+
+Delete Book:
+Add button to each row:
+    for(i = 0, 0<mylibrary.length; i++)
+Match id from button with book position in array
+Delete id position in array
+Delete parent row
+
+#Fix deletebtn: deleteBookContainer deletes all rows including the buttons, so I need to resave those buttons

@@ -3,10 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
     
+    <div class="container">
+        <h1>Library</h1>
+
+        <button id="btnAddBook">Add book</button>
+
+        <div class="table-header">
+            <div class="table-values">Title</div>
+            <div class="table-values">Author</div>
+            <div class="table-values">Pages</div>
+            <div class="table-values">Status</div>
+            <div class="table-values">del</div>
+        </div>
+
+        <div class="book-container">
+
+        </div>
+
+    </div>   
+
+    <div class="bg-form-add">
+        <div class="form-add">
+            <div class="container-form">
+                <form id="form">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" name="title" placeholder="Title">
+
+                    <label for="author">Author</label>
+                    <input id="author" type="text" name="author">
+
+                    <label for="pages">Pages</label>
+                    <input id="pages" type="text" name="pages">
+
+                    <label for="status">Status</label>
+                    <input id="status" type="text" name="status">
+
+                    <button type="submit" id="btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <script src="script.js"></script>
 </body>
