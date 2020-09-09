@@ -11,17 +11,27 @@ Book.prototype.info = function(){
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
+Book.prototype.toggle = function(bol){
+    if(this.read == true){
+        this.read = false;
+    }
+    else if(this.read == false){
+        this.read = true;
+    }
+}
+
 function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read));
 }
 
-let book1 = new Book("The Hobbit", "Tolkien", 300, "Not read");
+let book1 = new Book("The Hobbit", "Tolkien", 300, true);
 myLibrary.push(book1);
 
-let book2 = new Book("silmarillion", "Tolkien", 300, "Not read");
+let book2 = new Book("silmarillion", "Tolkien", 300, false);
 myLibrary.push(book2);
 
-addBookToLibrary("Lord of the Rings", "Tolkien", 300, "Not read")
+addBookToLibrary("Lord of the Rings", "Tolkien", 300, true)
+
 
 
 const container = document.querySelector('.container')
@@ -53,13 +63,25 @@ function render(){
         btnDelete.classList = "btn-delete";
         btnDelete.id = index;
         btnDelete.innerText = 'Del'
-    
         deleteDiv.appendChild(btnDelete);
 
         btnDelete.addEventListener('click', function(e){
             console.log(btnDelete.id)
             myLibrary.splice(btnDelete.id, 1);
             let btnRow = btnDelete.parentNode.parentNode;
+            deleteAllBooks()
+            render()
+        })
+
+        let btnToggle = document.createElement('button');
+        btnToggle.classList = 'btn-toggle';
+        btnToggle.id = index;
+        btnToggle.innerText = 'T';
+
+        deleteDiv.appendChild(btnToggle);
+
+        btnToggle.addEventListener('click', function(e){
+            myLibrary[btnToggle.id].toggle();
             deleteAllBooks()
             render()
         })
